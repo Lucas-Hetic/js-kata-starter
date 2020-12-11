@@ -1,7 +1,9 @@
-import { doTheThing } from ".";
+import { createStaminaSession } from "./index";
+import { v4 as uuidv4 } from 'uuid'
 
-describe("Test of the test framework", function() {
-  it("Should pass", function() {
-    expect(doTheThing()).toEqual(true);
-  });
+it("Should pass", function() {
+  expect(createStaminaSession()).toEqual({
+    id: uuidv4(), 
+    date: new Date(), 
+    comments:""});
 });
