@@ -9,10 +9,19 @@ interface StaminaSession {
   comments: string;
 }
 
-export function createStaminaSession():StaminaSession {
+interface IdGenerator {
+  (): string,
+}
+interface DateGenerator {
+  (): Date,
+}
+
+export function createStaminaSession(
+  idgenerator: IdGenerator, 
+  dategenerator: DateGenerator):StaminaSession {
   return {
-    id: uuidv4(),
-    date: new Date(),
+    id: idgenerator(),
+    date: dategenerator(),
     comments:"",
   }
 }
